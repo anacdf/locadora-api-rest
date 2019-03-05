@@ -27,10 +27,16 @@ public class UserService {
         return userRepository.save(user);
     }
 
+    public User update(Long id, User user) {
+        User novo = this.findById(id).orElseThrow(IllegalArgumentException::new);
+        novo.builder()
+                .nome(user.getNome())
+                .telefone(user.getTelefone())
+                .build();
+        return userRepository.save(novo);
+    }
+
     public void delete(Long id) {
         userRepository.deleteById(id);
     }
-
-
-
 }

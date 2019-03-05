@@ -3,7 +3,6 @@ package com.dedavid.locadora.service;
 import com.dedavid.locadora.model.Filme;
 import com.dedavid.locadora.repository.FilmeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,5 +24,18 @@ public class FilmeService {
 
     public Filme save(Filme filme) {
         return filmeRepository.save(filme);
+    }
+
+    public Filme update(Long id, Filme filme) {
+        Filme novo = this.findById(id).get();
+        novo.builder()
+                .diretor(filme.getDiretor())
+                .titulo(filme.getTitulo())
+                .build();
+        return filmeRepository.save(novo);
+    }
+
+    public void delete(Long id) {
+        filmeRepository.deleteById(id);
     }
 }

@@ -1,6 +1,7 @@
 package com.dedavid.locadora.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,15 +12,14 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Filme {
 
     @Id
-    @GeneratedValue
+  //  @GeneratedValue
     private Long id;
 
-    @Column
     private String titulo;
 
-    @Column
     private String diretor;
 }
